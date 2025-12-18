@@ -1,4 +1,11 @@
+"use client";
 export default function Navbar() {
+  const today = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   return (
    <header className="w-full bg-white shadow-sm sticky top-0 z-50">
 
@@ -13,7 +20,7 @@ export default function Navbar() {
 
         {/* Right: Date + Weather */}
         <div className="flex items-center gap-3 text-gray-700 text-sm">
-          <span>Sunday, December 7, 2025</span>
+          <span>{today}</span>
           <span className="text-xl">🌤️</span>
         </div>
 
