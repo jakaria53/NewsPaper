@@ -6,7 +6,7 @@ export default function Sidebar() {
         bg-gray-900 text-gray-200
         p-6 border-r border-gray-800
         shadow-md rounded-lg
-        sticky top-28 self-start
+        sticky top-28 self-start bg
         h-fit
          
       "
