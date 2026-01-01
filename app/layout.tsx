@@ -3,6 +3,7 @@ import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import Sidebar from "@/component/Sidebar";
 
+
 export const metadata = {
   title: "News Portal",
   description: "Latest updates and headlines",

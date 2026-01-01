@@ -1,5 +1,6 @@
 import HeroNews from "@/component/HeroNews";
 import NewsCard from "@/component/NewsCard";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
       <HeroNews 
         title="রাষ্ট্রীয় মর্যাদায় খালেদা জিয়ার দাফন সম্পন্ন"
         excerpt="বাংলাদেশের সাবেক প্রধানমন্ত্রী ও বিএনপির চেয়ারপারসন খালেদা জিয়ার দাফন সম্পন্ন হয়েছে। তার জানাজায় অংশ নিয়েছেন অসংখ্য মানুষ। তার মৃত্যুতে তিনদিনের রাষ্ট্রীয় শোকের পাশাপাশি বুধবার পালিত হয় সাধারণ ছুটি। তাকে শেষ শ্রদ্ধা জানাতে ঢাকায় আসেন ভারত, ভুটানের পররাষ্ট্রমন্ত্রীসহ বিভিন্ন দেশের প্রতিনিধিরা।"
-        image="/images/zia.webp"
+        image="/image.jpg"
       />
 
       {/* ========================= */}
@@ -30,7 +31,7 @@ export default function Home() {
 
           <NewsCard 
             title="Economy growth hits new high"
-            image="/news1.jpg"
+            image="/zia.webp"
           />
 
           <NewsCard 
