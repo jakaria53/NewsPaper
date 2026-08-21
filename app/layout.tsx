@@ -1,29 +1,44 @@
 import "./globals.css";
-import Navbar from "../component/Navbar";
-import Footer from "../component/Footer";
-import Sidebar from "@/component/Sidebar";
 
+import Navbar from "@/component/Navbar";
+import Footer from "@/component/Footer";
+import Sidebar from "@/component/Sidebar";
+import BreakingNews from "@/component/BreakingNews";
 
 export const metadata = {
-  title: "News Portal",
-  description: "Latest updates and headlines",
+  title: "Royal News",
+  description: "Latest news and headlines",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="bg-white text-white min-h-screen">
-        
-        <Navbar />
-         <div className="max-w-1xl mx-auto flex">
+      <body className="bg-white text-gray-900 min-h-screen">
 
-          
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Full Width Breaking News */}
+        <BreakingNews />
+
+        {/* Main Website Layout */}
+        <div className="max-w-7xl mx-auto flex gap-6">
+
+          {/* Sidebar */}
           <Sidebar />
 
-        <main className="max-w-6xl mx-auto p-4">
-          {children}
-        </main>
-     </div>
+          {/* Page Content */}
+          <main className="flex-1 min-w-0">
+            {children}
+          </main>
+
+        </div>
+
+        {/* Footer */}
         <Footer />
 
       </body>

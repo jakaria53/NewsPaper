@@ -1,122 +1,304 @@
 import HeroNews from "@/component/HeroNews";
+import BreakingNews from "@/component/BreakingNews";
 import NewsCard from "@/component/NewsCard";
-import Image from "next/image";
+import TrendingNews from "@/component/TrendingNews";
+import { newsData } from "@/data/news";
+import Link from "next/link";
 
 export default function Home() {
+
+  // Hero news
+
+  const heroNews =
+    newsData.find((news) => news.featured) || newsData[0];
+
+
+  // Featured news
+
+  const featuredNews = newsData
+    .filter(
+      (news) =>
+        news.featured &&
+        news.id !== heroNews.id
+    )
+    .slice(0, 4);
+
+
+  // Latest news
+
+  const latestNews = newsData.slice(0, 6);
+
+
+  // Top stories
+
+  const topStories = newsData
+    .filter(
+      (news) =>
+        news.featured &&
+        news.id !== heroNews.id
+    )
+    .slice(0, 3);
+
+
   return (
-    <main className="space-y-16">
-
-      {/* 🔥 Hero Big Headline (Main Top Story) */}
-      <HeroNews 
-        title="রাষ্ট্রীয় মর্যাদায় খালেদা জিয়ার দাফন সম্পন্ন"
-        excerpt="বাংলাদেশের সাবেক প্রধানমন্ত্রী ও বিএনপির চেয়ারপারসন খালেদা জিয়ার দাফন সম্পন্ন হয়েছে। তার জানাজায় অংশ নিয়েছেন অসংখ্য মানুষ। তার মৃত্যুতে তিনদিনের রাষ্ট্রীয় শোকের পাশাপাশি বুধবার পালিত হয় সাধারণ ছুটি। তাকে শেষ শ্রদ্ধা জানাতে ঢাকায় আসেন ভারত, ভুটানের পররাষ্ট্রমন্ত্রীসহ বিভিন্ন দেশের প্রতিনিধিরা।"
-        image="/image.jpg"
-      />
+    <>
 
       {/* ========================= */}
-      {/* 📰 Main News Section     */}
+      {/* 🔴 Breaking News */}
       {/* ========================= */}
-      <section className="max-w-7xl mx-auto px-4">
-        
-        {/* Section Title */}
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
-            Latest News
-          </h2>
-          <span className="text-sm text-gray-500">Updated just now</span>
-        </div>
 
-        {/* News Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+     
 
-          <NewsCard 
-            title="Economy growth hits new high"
-            image="/zia.webp"
+
+      <main className="space-y-12 sm:space-y-14 lg:space-y-16">
+
+
+        {/* ========================= */}
+        {/* 🔥 Hero News */}
+        {/* ========================= */}
+
+        <section className="max-w-7xl mx-auto px-4 pt-6">
+
+          <HeroNews
+            id={heroNews.id}
+            title={heroNews.title}
+            excerpt={heroNews.excerpt}
+            image={heroNews.image}
+            category={heroNews.category}
           />
 
-          <NewsCard 
-            title="Sports: Big win last night"
-            image="/news2.jpg"
-          />
+        </section>
 
-          <NewsCard 
-            title="Technology: New app trend rising"
-            image="/news3.jpg"
-          />
 
-          <NewsCard 
-            title="Global markets react to policy changes"
-            image="/news1.jpg"
-          />
+        {/* ========================= */}
+        {/* 📈 Trending */}
+        {/* ========================= */}
 
-          <NewsCard 
-            title="Entertainment industry sees major shift"
-            image="/news2.jpg"
-          />
+        <TrendingNews />
 
-          <NewsCard 
-            title="New research reveals surprising results"
-            image="/news3.jpg"
-          />
 
-        </div>
-      </section>
+        {/* ========================= */}
+        {/* 📰 Latest News */}
+        {/* ========================= */}
 
-      {/* ========================= */}
-      {/* 🔻 Featured Category Row  */}
-      {/* ========================= */}
-     <section className="max-w-7xl mx-auto px-4 mt-16">
-      <h2 className="text-3xl font-bold text-gray-900 mb-8 tracking-tight">
-        Top Stories
-      </h2>
+        <section className="max-w-7xl mx-auto px-4">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        
-        {/* Left Big Card */}
-        <div className="relative overflow-hidden rounded-xl shadow-xl group cursor-pointer transition-transform hover:scale-105">
-          <img
-            src="/news1.jpg"
-            className="w-full h-80 object-cover rounded-xl"
-          />
-          <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-xl">
-            <h3 className="text-3xl font-bold text-white drop-shadow-lg">
-              Major Global Event Makes Headlines
-            </h3>
-            <p className="text-gray-200 mt-2 text-sm drop-shadow">
-              Global audiences are following this major update closely.
-            </p>
-          </div>
-        </div>
+          <div className="flex items-center justify-between mb-6">
 
-        {/* Right List */}
-        <div className="space-y-6">
-          {[
-            {
-              title: "New environmental rules announced globally",
-              excerpt: "Authorities claim this will reduce emissions significantly."
-            },
-            {
-              title: "Tech companies prepare for massive changes",
-              excerpt: "Analysts predict a shift in the digital ecosystem."
-            },
-            {
-              title: "Education reforms spark national debate",
-              excerpt: "Students welcome new changes but experts remain divided."
-            }
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl p-4 shadow hover:shadow-lg transition cursor-pointer border border-gray-200"
+            <h2 className="text-3xl font-bold text-gray-900">
+              Latest News
+            </h2>
+
+            <Link
+              href="/search"
+              className="text-sm text-blue-600 hover:text-blue-800"
             >
-              <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
-              <p className="text-gray-500 text-sm mt-1">{item.excerpt}</p>
+              View all →
+            </Link>
+
+          </div>
+
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-3
+              gap-8
+            "
+          >
+
+            {latestNews.map((news) => (
+
+              <NewsCard
+                key={news.id}
+                id={news.id}
+                title={news.title}
+                image={news.image}
+              />
+
+            ))}
+
+          </div>
+
+        </section>
+
+
+        {/* ========================= */}
+        {/* ⭐ Top Stories */}
+        {/* ========================= */}
+
+        <section className="max-w-7xl mx-auto px-4">
+
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+            Top Stories
+          </h2>
+
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+
+            {/* Left Big Story */}
+
+            {topStories[0] && (
+
+              <Link
+                href={`/news/${topStories[0].id}`}
+                className="group"
+              >
+
+                <article
+                  className="
+                    relative
+                    overflow-hidden
+                    rounded-xl
+                    shadow-xl
+                    h-80
+                  "
+                >
+
+                  <img
+                    src={topStories[0].image}
+                    alt={topStories[0].title}
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+                      transition-transform
+                      duration-500
+                      group-hover:scale-105
+                    "
+                  />
+
+
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-t
+                      from-black/80
+                      via-black/30
+                      to-transparent
+                    "
+                  />
+
+
+                  <div className="absolute bottom-0 left-0 p-6">
+
+                    <p className="text-blue-300 text-sm font-semibold uppercase">
+                      {topStories[0].category}
+                    </p>
+
+                    <h3 className="text-3xl font-bold text-white mt-2">
+                      {topStories[0].title}
+                    </h3>
+
+                    <p className="text-gray-200 mt-2 text-sm">
+                      {topStories[0].excerpt}
+                    </p>
+
+                  </div>
+
+                </article>
+
+              </Link>
+
+            )}
+
+
+            {/* Right Stories */}
+
+            <div className="space-y-5">
+
+              {topStories.slice(1).map((news) => (
+
+                <Link
+                  key={news.id}
+                  href={`/news/${news.id}`}
+                  className="block group"
+                >
+
+                  <article
+                    className="
+                      bg-white
+                      rounded-xl
+                      p-5
+                      shadow
+                      hover:shadow-lg
+                      transition
+                      border
+                      border-gray-200
+                    "
+                  >
+
+                    <p className="text-xs text-blue-600 font-semibold uppercase">
+                      {news.category}
+                    </p>
+
+                    <h3
+                      className="
+                        text-xl
+                        font-semibold
+                        text-gray-900
+                        mt-1
+                        group-hover:text-blue-600
+                      "
+                    >
+                      {news.title}
+                    </h3>
+
+                    <p className="text-gray-500 text-sm mt-2">
+                      {news.excerpt}
+                    </p>
+
+                  </article>
+
+                </Link>
+
+              ))}
+
             </div>
-          ))}
-        </div>
 
-      </div>
-    </section>
+          </div>
 
-    </main>
+        </section>
+
+
+        {/* ========================= */}
+        {/* ⭐ Featured News */}
+        {/* ========================= */}
+
+        {featuredNews.length > 0 && (
+
+          <section className="max-w-7xl mx-auto px-4">
+
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              Featured
+            </h2>
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+              {featuredNews.map((news) => (
+
+                <NewsCard
+                  key={news.id}
+                  id={news.id}
+                  title={news.title}
+                  image={news.image}
+                />
+
+              ))}
+
+            </div>
+
+          </section>
+
+        )}
+
+      </main>
+
+    </>
   );
 }
