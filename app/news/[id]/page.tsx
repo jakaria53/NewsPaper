@@ -82,7 +82,7 @@ export default async function NewsDetailsPage({
         />
       </div>
 
-      {/* Excerpt */}
+     
       <p className="text-xl text-gray-700 mt-8">
         {news.excerpt}
       </p>
