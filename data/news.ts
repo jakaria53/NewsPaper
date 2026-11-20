@@ -12,20 +12,20 @@ export interface News {
 }
 
 export const newsData: News[] = [
-  {
-    id: 1,
-    title: "রাষ্ট্রীয় মর্যাদায় খালেদা জিয়ার দাফন সম্পন্ন",
-    category: "National",
-    image: "/image.jpg",
-    excerpt:
-      "বাংলাদেশের সাবেক প্রধানমন্ত্রী ও বিএনপির চেয়ারপারসন খালেদা জিয়ার দাফন সম্পন্ন হয়েছে।",
-    content:
-      "বাংলাদেশের সাবেক প্রধানমন্ত্রী ও বিএনপির চেয়ারপারসন খালেদা জিয়ার দাফন সম্পন্ন হয়েছে। তার জানাজায় অংশ নিয়েছেন অসংখ্য মানুষ।",
-    author: "Royal News Desk",
-    date: "August 20, 2026",
-    featured: true,
-    breaking: true,
-  },
+ 
+{
+  id: 1,
+  title: "Khaleda Zia Laid to Rest with State Honours",
+  category: "National",
+  image: "/image/images.jpg",
+  excerpt:
+    "Former Prime Minister and BNP Chairperson Khaleda Zia has been laid to rest with state honours. Thousands attended her funeral prayers as representatives from several countries arrived in Dhaka to pay their respects.",
+  content:
+    "Former Prime Minister and BNP Chairperson Khaleda Zia has been laid to rest with state honours. Thousands of people attended her funeral prayers. Representatives from several countries also arrived in Dhaka to pay their respects.",
+  author: "Royal News",
+  date: "19 August 2026",
+},
+
 
   {
     id: 2,
